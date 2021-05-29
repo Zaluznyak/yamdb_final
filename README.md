@@ -1,3 +1,5 @@
+![yamdb workflow](https://github.com/Zaluznyak/yamdb_final/workflows/yamdb_workflow/badge.svg)
+
 # api_yamdb
 
 ## Описание
