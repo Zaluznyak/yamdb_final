@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
-
 from models import Category, Comment, Genre, Review, Title
 
 
@@ -20,9 +19,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
         fields = ('name', 'slug')
         model = Category
-        validators = \
-            [UniqueTogetherValidator(queryset=Category.objects.all(),
-             fields=['name'])]
+        validators = [UniqueTogetherValidator(queryset=Category.objects.all(),
+                      fields=['name'])]
 
 
 class TitlesCreateUpdateSerializer(serializers.ModelSerializer):
@@ -30,9 +28,8 @@ class TitlesCreateUpdateSerializer(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)
     genre = serializers.SlugRelatedField(queryset=Genre.objects.all(),
                                          slug_field='slug', many=True)
-    category = \
-        serializers.SlugRelatedField(queryset=Category.objects.all(),
-                                     slug_field='slug')
+    category = serializers.SlugRelatedField(queryset=Category.objects.all(),
+                                            slug_field='slug')
 
     class Meta:
 
@@ -76,9 +73,9 @@ class ReviewSerializer(serializers.ModelSerializer):
     def validate(self, data):
         title_id = self.context['view'].kwargs.get('title_id')
         author = self.context['request'].user
-        if self.context['request'].method == 'POST' \
+        if (self.context['request'].method == 'POST'
             and Review.objects.filter(title=title_id,
-                                      author=author).exists():
+                                      author=author).exists()):
             raise serializers.ValidationError('You can review title only once'
                                               'Consider partial update of your'
                                               'review.')
