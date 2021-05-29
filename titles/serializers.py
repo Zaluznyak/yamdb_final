@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
-from models import Category, Comment, Genre, Review, Title
+from .models import Category, Comment, Genre, Review, Title
 
 
 class GenreSerializer(serializers.ModelSerializer):
