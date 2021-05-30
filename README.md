@@ -1,5 +1,7 @@
 ![yamdb workflow](https://github.com/zaluznyak/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
 
+Адрес сайта: http://84.252.133.224/api/v1/
+
 # api_yamdb
 
 ## Описание
